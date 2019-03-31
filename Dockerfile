@@ -17,6 +17,7 @@ RUN deps="alpine-sdk curl autoconf automake libtool boost-dev openssl-dev libeve
   mkdir /wallet &&\
   cd /wallet && \
   git clone https://gitlab.projectmerge.org/ProjectMerge/merge.git . &&\   
+  sed -i '7s/.*/define(_CLIENT_VERSION_IS_RELEASE, true)/' ./configure.ac  &&\
   ./autogen.sh && \ 
   ./configure LDFLAGS=-L/opt/db/lib CPPFLAGS=-I/opt/db/include && \ 
   make install && \ 
